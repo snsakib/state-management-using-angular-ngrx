@@ -10,8 +10,10 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-flat-button color="primary" class="add-to-cart-btn" routerLink="/product/{{ product.id }}" routerLinkActive="active"
-        ariaCurrentWhenActive="page">ADD TO CART</a>
+      <a mat-stroked-button color="primary" class="details-btn" routerLink="/product/{{ product.id }}" routerLinkActive="active"
+        ariaCurrentWhenActive="page">View Details</a>
+      <a mat-flat-button color="primary" class="add-to-cart-btn" routerLink="/product/{{ product.id }}"
+        routerLinkActive="active" ariaCurrentWhenActive="page">Add to Cart</a>
     </mat-card-actions>
   </mat-card>
 </div>

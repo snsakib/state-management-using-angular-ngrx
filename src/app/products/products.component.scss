@@ -20,7 +20,14 @@
   align-items: center;
 }
 
-.add-to-cart-btn {
-  width: 100%;
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-btn, .add-to-cart-btn {
+  width: 50%;
+  margin: 5px;
   font-size: 16px;
 }

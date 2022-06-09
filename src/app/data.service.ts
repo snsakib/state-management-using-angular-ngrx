@@ -13,6 +13,7 @@ export class DataService implements InMemoryDbService {
       {
         id: 1,
         title: 'Product Title',
+        author: 'Author',
         description: 'Insurance policy number PO1',
         imgUrl: 'https://snsakib.com',
         price: 1000,
@@ -21,6 +22,7 @@ export class DataService implements InMemoryDbService {
       {
         id: 2,
         title: 'Product Title',
+        author: 'Author',
         description: 'Insurance policy number PO2',
         imgUrl: 'https://snsakib.com',
         price: 2000,
@@ -29,6 +31,7 @@ export class DataService implements InMemoryDbService {
       {
         id: 3,
         title: 'Product Title',
+        author: 'Author',
         description: 'Insurance policy number PO3',
         imgUrl: 'https://snsakib.com',
         price: 3000,
@@ -37,6 +40,7 @@ export class DataService implements InMemoryDbService {
       {
         id: 4,
         title: 'Product Title',
+        author: 'Author',
         description: 'Insurance policy number PO4',
         imgUrl: 'https://snsakib.com',
         price: 4000,

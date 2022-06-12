@@ -16,4 +16,10 @@ export class ProductsComponent implements OnInit {
       .getProducts()
       .subscribe((products: Product[]) => (this.products = products));
   }
+
+  addToCart(product: Product) {
+    if(product) {
+      this.productsService.addToShoppingCart(product).subscribe();
+    }
+  }
 }

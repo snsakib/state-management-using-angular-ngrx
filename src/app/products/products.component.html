@@ -12,8 +12,7 @@
     <mat-card-actions>
       <a mat-stroked-button color="primary" class="details-btn" routerLink="/product/{{ product.id }}"
         routerLinkActive="active" ariaCurrentWhenActive="page">View Details</a>
-      <a mat-flat-button color="primary" class="add-to-cart-btn" routerLink="/product/{{ product.id }}"
-        routerLinkActive="active" ariaCurrentWhenActive="page">Add to Cart</a>
+      <button mat-flat-button color="primary" class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button>
     </mat-card-actions>
   </mat-card>
 </div>

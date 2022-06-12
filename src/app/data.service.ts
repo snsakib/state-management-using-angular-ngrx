@@ -28,7 +28,7 @@ export class DataService implements InMemoryDbService {
         description:
           'Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.',
         imgUrl:
-          'https://images-na.ssl-images-amazon.com/images/I/518FqJvR9aL._SX382_BO1,204,203,200_.jpg',
+          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1401432508l/4099.jpg',
         quantity: 146,
         price: 38.99,
       },
@@ -39,7 +39,7 @@ export class DataService implements InMemoryDbService {
         description:
           'Dave Thomas and Andy Hunt wrote the first edition of this influential book in 1999 to help their clients create better software and rediscover the joy of coding. These lessons have helped a generation of programmers examine the very essence of software development, independent of any particular language, framework, or methodology, and the Pragmatic philosophy has spawned hundreds of books, screencasts, and audio books, as well as thousands of careers and success stories.',
         imgUrl:
-          'https://images-na.ssl-images-amazon.com/images/I/41SH-SvWPxL._SX376_BO1,204,203,200_.jpg',
+          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1436202607l/3735293._SX318_.jpg',
         quantity: 453,
         price: 30.18,
       },
@@ -50,7 +50,7 @@ export class DataService implements InMemoryDbService {
         description:
           'How many pizzas are delivered in Manhattan? How do you design an alarm clock for the blind? What is your favorite piece of software and why? How would you launch a video rental service in India? This book will teach you how to answer these questions and more.',
         imgUrl:
-          'https://m.media-amazon.com/images/P/B00ISYMUR6.01._SCLZZZZZZZ_SX500_.jpg',
+          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1631289726l/19243347._SY475_.jpg',
         quantity: 124,
         price: 37.18,
       },
@@ -97,9 +97,11 @@ export class DataService implements InMemoryDbService {
           'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447957962l/25744928._SY475_.jpg',
         quantity: 231,
         price: 28.45,
-      }
+      },
     ];
 
-    return { products };
+    let shoppingCart: Product[] = [];
+
+    return { products, shoppingCart };
   }
 }

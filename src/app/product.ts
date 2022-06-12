@@ -7,3 +7,8 @@ export interface Product {
   price: number;
   quantity: number;
 }
+
+export interface Cart {
+  products: Product[];
+  total: number;
+}

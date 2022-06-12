@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+mat-card {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  #total-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+
+mat-icon {
+  color: red;
+}

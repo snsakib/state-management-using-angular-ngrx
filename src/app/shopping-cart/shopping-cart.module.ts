@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { ShoppingCartComponent } from './shopping-cart.component';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [
-    ShoppingCartComponent
-  ],
+  declarations: [ShoppingCartComponent],
   imports: [
     CommonModule,
-    ShoppingCartRoutingModule
-  ]
+    ShoppingCartRoutingModule,
+    MatCardModule,
+    MatSelectModule,
+    MatIconModule,
+  ],
 })
-export class ShoppingCartModule { }
+export class ShoppingCartModule {}

@@ -100,7 +100,30 @@ export class DataService implements InMemoryDbService {
       },
     ];
 
-    let shoppingCart: Product[] = [];
+    let shoppingCart: Product[] = [
+      {
+        id: 1,
+        title: 'Atomic Habits',
+        author: 'James Clear',
+        description:
+          "No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.",
+        imgUrl:
+          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535115320l/40121378._SY475_.jpg',
+        quantity: 500,
+        price: 11.98,
+      },
+      {
+        id: 2,
+        title: 'The Pragmatic Programmer',
+        author: 'David Thomas, Andrew Hunt',
+        description:
+          'Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.',
+        imgUrl:
+          'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1401432508l/4099.jpg',
+        quantity: 146,
+        price: 38.99,
+      },
+    ];
 
     return { products, shoppingCart };
   }

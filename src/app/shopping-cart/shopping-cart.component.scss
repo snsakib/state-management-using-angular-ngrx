@@ -13,6 +13,29 @@ mat-card {
   align-items: center;
   margin-bottom: 20px;
 
+  .product-img {
+    width: 10%;
+  }
+
+  .product-title-author {
+    width: 40%;
+  }
+
+  .product-quantity {
+    width: 20%;
+  }
+
+  .product-price {
+    width: 20%;
+    text-align: center;
+  }
+
+  .product-actions {
+    display: flex;
+    justify-content: space-around;
+    width: 10%;
+  }
+
   #total-info {
     display: flex;
     justify-content: space-between;

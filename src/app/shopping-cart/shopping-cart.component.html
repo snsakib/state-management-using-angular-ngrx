@@ -1,10 +1,13 @@
 <div class="container">
   <mat-card *ngFor="let product of cart">
-    <div>
+    <div class="product-img">
+      <img src="{{ product.imgUrl }}" width="100px" height="100px">
+    </div>
+    <div class="product-title-author">
       <h1>{{ product.title }}</h1>
       <h2>{{ product.author }}</h2>
     </div>
-    <div>
+    <div class="product-quantity">
       <mat-form-field appearance="fill">
         <mat-label>Quantity</mat-label>
         <mat-select [(value)]="selected">
@@ -14,10 +17,10 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div>
+    <div class="product-price">
       <h1>$ {{ product.price }}</h1>
     </div>
-    <div>
+    <div class="product-actions">
       <mat-icon aria-hidden="false" aria-label="Update icon">autorenew</mat-icon>
       <mat-icon aria-hidden="false" aria-label="Delete icon">delete</mat-icon>
     </div>

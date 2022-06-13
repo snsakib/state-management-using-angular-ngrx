@@ -9,4 +9,4 @@ RUN apt update &&\
 
 
 RUN	git clone https://github.com/snsakib/state-management-using-angular-ngrx.git &&\
-	cd state-management-using-angular-ngrx && npm run build
+	cd state-management-using-angular-ngrx && npm install

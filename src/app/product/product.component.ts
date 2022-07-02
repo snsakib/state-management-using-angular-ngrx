@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
 
@@ -21,6 +22,7 @@ export class ProductComponent implements OnInit {
   };
 
   constructor(
+    private store: Store<any>,
     private productService: ProductsService,
     private route: ActivatedRoute
   ) {}
@@ -31,5 +33,20 @@ export class ProductComponent implements OnInit {
     this.productService
       .getProduct(this.id)
       .subscribe((product: Product) => (this.product = product));
+  }
+
+  // addToCart() {
+  //   this.productService
+  //     .addToShoppingCart(this.product)
+  //     .subscribe((product: Product) => console.log(product));
+  // }
+
+  addToCart() {
+    this.store.dispatch({
+      type: '[PRODUCT] Add To Cart',
+      payload: {
+        product: this.product
+      }
+    })
   }
 }

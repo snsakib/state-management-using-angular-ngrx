@@ -12,14 +12,18 @@ export class ProductsComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.productsService
-      .getProducts()
-      .subscribe((products: Product[]) => (this.products = products));
+    this.getProducts();
   }
 
   addToCart(product: Product) {
-    if(product) {
+    if (product) {
       this.productsService.addToShoppingCart(product).subscribe();
     }
+  }
+
+  getProducts() {
+    this.productsService
+      .getProducts()
+      .subscribe((products: Product[]) => (this.products = products));
   }
 }

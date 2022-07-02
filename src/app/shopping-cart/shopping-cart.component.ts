@@ -5,18 +5,21 @@ import { ProductsService } from '../products.service';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
+  styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
   cart: Product[] = [];
-  selected: string = "1";
+  selected: string = '1';
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.productsService.getShoppingCart().subscribe(data => {
+    this.getShoppingCart();
+  }
+
+  getShoppingCart() {
+    this.productsService.getShoppingCart().subscribe((data) => {
       this.cart = data;
     });
   }
-
 }

@@ -5,6 +5,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { MatButtonModule } from '@angular/material/button';
 
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ProductRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forFeature('product', {})
   ]
 })
 export class ProductModule { }

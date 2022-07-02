@@ -28,8 +28,12 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.id = params['id']));
 
+    this.getProduct(this.id);
+  }
+
+  getProduct(id: number) {
     this.productService
-      .getProduct(this.id)
+      .getProduct(id)
       .subscribe((product: Product) => (this.product = product));
   }
 }

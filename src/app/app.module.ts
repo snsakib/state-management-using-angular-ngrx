@@ -10,6 +10,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { productsReducer } from './products/state/products.reducers';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
@@ -19,7 +20,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(DataService),
     HttpClientModule,
-    StoreModule.forRoot({})
+    StoreModule.forRoot({ products: productsReducer })
   ],
   providers: [],
   bootstrap: [AppComponent],

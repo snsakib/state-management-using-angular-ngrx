@@ -1,1 +1,1 @@
-export const productsInitialState = []
+export const productsInitialState = <any>[]

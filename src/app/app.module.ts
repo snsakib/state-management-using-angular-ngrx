@@ -11,6 +11,8 @@ import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './products/state/products.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
@@ -20,7 +22,8 @@ import { productsReducer } from './products/state/products.reducer';
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(DataService),
     HttpClientModule,
-    StoreModule.forRoot({products: productsReducer})
+    StoreModule.forRoot({products: productsReducer}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],

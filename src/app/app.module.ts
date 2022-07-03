@@ -19,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(DataService),
     HttpClientModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { getProduct } from './state/product.action';
+import { selectProduct } from './state/product.selector';
 
 @Component({
   selector: 'app-product',
@@ -32,7 +34,11 @@ export class ProductComponent implements OnInit {
 
     this.productService
       .getProduct(this.id)
-      .subscribe((product: Product) => (this.product = product));
+      .subscribe((product: Product) => this.store.dispatch(getProduct({product})));
+
+    this.store.select(selectProduct).subscribe(product => {
+      this.product = product
+    })
   }
 
   // addToCart() {

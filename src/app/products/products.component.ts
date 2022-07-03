@@ -3,6 +3,7 @@ import { ProductsService } from '../products.service';
 import { Product } from '../product';
 import { Store } from '@ngrx/store';
 import { getProductsAction } from './state/products.actions';
+import { getProductsSelector } from './state/products.selectors';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -15,6 +16,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+
+    this.store.select(getProductsSelector).subscribe((products: any) => this.products = products)
   }
 
   addToCart(product: Product) {

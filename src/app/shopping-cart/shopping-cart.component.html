@@ -1,38 +1,40 @@
 <div class="container">
   <mat-card *ngFor="let product of cart">
     <div class="product-img">
-      <img src="{{ product.imgUrl }}" width="100px" height="100px">
+      <img src="{{ product.imgUrl }}">
     </div>
-    <div class="product-title-author">
-      <h1>{{ product.title }}</h1>
-      <h2>{{ product.author }}</h2>
-    </div>
-    <div class="product-quantity">
-      <mat-form-field appearance="fill">
-        <mat-label>Quantity</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-          <mat-option value="3">3</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="product-price">
-      <h1>$ {{ product.price }}</h1>
-    </div>
-    <div class="product-actions">
-      <mat-icon aria-hidden="false" aria-label="Update icon">autorenew</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Delete icon">delete</mat-icon>
+    <div class="info-container">
+      <div class="product-title-author">
+        <h1>{{ product.title }}</h1>
+        <h2>{{ product.author }}</h2>
+      </div>
+      <div class="product-quantity">
+        <mat-form-field appearance="fill">
+          <mat-label>Quantity</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="product-price">
+        <h1>$ {{ product.price }}</h1>
+      </div>
+      <!-- <div class="product-actions">
+        <mat-icon aria-hidden="false" aria-label="Update icon">autorenew</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Delete icon">delete</mat-icon>
+      </div> -->
     </div>
   </mat-card>
-  <mat-card>
+  <!-- <mat-card>
     <div id="total-info">
       <div></div>
       <div></div>
       <h1>
-        <!-- Total: $ {{ total }} -->
+        Total: $ {{ total }}
       </h1>
       <div></div>
     </div>
-  </mat-card>
+  </mat-card> -->
 </div>

@@ -21,7 +21,7 @@
 }
 
 mat-card {
-  width: 25%;
+  width: 20%;
   margin-bottom: 50px;
 }
 
@@ -35,4 +35,27 @@ mat-card-actions {
   width: 50%;
   margin: 5px;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 475px ) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-card {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 476px ) {
+  mat-card {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 900px ) {
+  mat-card {
+    width: 30%;
+  }
 }

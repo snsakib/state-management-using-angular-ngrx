@@ -20,6 +20,11 @@
   align-items: center;
 }
 
+mat-card {
+  width: 25%;
+  margin-bottom: 50px;
+}
+
 mat-card-actions {
   display: flex;
   justify-content: space-between;

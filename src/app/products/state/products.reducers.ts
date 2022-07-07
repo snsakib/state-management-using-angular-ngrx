@@ -7,7 +7,7 @@ export const productsReducer = createReducer(
   on(getProductsAction, (state, products) => {
     return {
       ...state,
-      data: products
+      data: products.data
     }
   })
 )

@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
 
-    this.store.select(getProductsSelector).subscribe((products: any) => this.products = products)
+    this.store.select(getProductsSelector).subscribe((products: any) => this.products = products.data)
   }
 
   addToCart(product: Product) {

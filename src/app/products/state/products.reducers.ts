@@ -4,5 +4,10 @@ import { productsInitialState } from "./products.state";
 
 export const productsReducer = createReducer(
   productsInitialState,
-  on(getProductsAction, (state, { products }) => products)
+  on(getProductsAction, (state, products) => {
+    return {
+      ...state,
+      data: products
+    }
+  })
 )

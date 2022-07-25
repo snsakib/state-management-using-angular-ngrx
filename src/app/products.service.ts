@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { Product } from './product';
 
 @Injectable({
@@ -9,6 +9,9 @@ import { Product } from './product';
 export class ProductsService {
   private BASE_URL: string = `api`;
   private PRODUCT_URL: string = 'api/products';
+
+  private cartCount = new BehaviorSubject(0);
+  private cartCount$ = this.cartCount.asObservable();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -44,19 +47,48 @@ export class ProductsService {
   }
 
   public getShoppingCart(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.BASE_URL}/shoppingCart`).pipe(
-      catchError(this.errorHandler)
-    );
+    return this.httpClient
+      .get<Product[]>(`${this.BASE_URL}/shoppingCart`)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  public getCartCount(): Observable<number> {
+    return this.cartCount$;
+  }
+
+  public setCartCount(latestValue: number) {
+    return this.cartCount.next(latestValue);
+  }
+
+  private incCartCounter() {
+    let cartCounts = 0;
+
+    this.cartCount$.subscribe((cartCount) => (cartCounts = cartCount));
+
+    this.setCartCount(cartCounts + 1);
+  }
+
+  private decCartCounter() {
+    let cartCounts = 0;
+
+    this.cartCount$.subscribe((cartCount) => (cartCounts = cartCount));
+
+    this.setCartCount(cartCounts - 1);
   }
 
   public addToShoppingCart(product: Product) {
     const headers = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
+
     return this.httpClient
       .post<Product>(`${this.BASE_URL}/shoppingCart`, product, headers)
       .pipe(
-        catchError(this.errorHandler)
+        tap((data) => {
+          if (data && data.id === product.id) {
+            this.incCartCounter();
+          }
+        }, catchError(this.errorHandler))
       );
   }
 

@@ -8,13 +8,11 @@ import { ProductsService } from './products.service';
 })
 export class AppComponent implements OnInit {
   title = 'book-store';
-  cartTotal = 5;
+  cartTotal = 0;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.productsService.getShoppingCart().subscribe((cartItems) => {
-      this.cartTotal = cartItems.length;
-    });
+    this.productsService.getCartCount().subscribe((cartCount) => this.cartTotal = cartCount);
   }
 }

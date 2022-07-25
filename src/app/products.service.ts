@@ -93,9 +93,12 @@ export class ProductsService {
   }
 
   public deleteFromShoppingCart(productId: number): Observable<Product> {
-    return this.httpClient.delete<Product>(
-      `${this.BASE_URL}/shoppingCart/${productId}`
-    );
+    return this.httpClient
+      .delete<Product>(`${this.BASE_URL}/shoppingCart/${productId}`)
+      .pipe(
+        tap(() => this.decCartCounter()), 
+        catchError(this.errorHandler)
+      );
   }
 
   public updateShoppingCartItem(productId: number): Observable<Product> {

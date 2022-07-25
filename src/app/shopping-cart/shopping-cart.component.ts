@@ -22,4 +22,8 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = data;
     });
   }
+
+  deleteProduct(id: number) {
+    this.productsService.deleteFromShoppingCart(id).subscribe();
+  }
 }

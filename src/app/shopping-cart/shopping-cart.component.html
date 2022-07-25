@@ -23,7 +23,7 @@
       </div>
       <div class="product-actions">
         <mat-icon aria-hidden="false" aria-label="Update icon">autorenew</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="Delete icon">delete</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Delete icon" (click)="deleteProduct(product.id)">delete</mat-icon>
       </div>
     </div>
   </mat-card>

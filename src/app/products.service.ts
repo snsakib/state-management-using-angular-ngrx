@@ -10,11 +10,11 @@ export class ProductsService {
   private BASE_URL: string = `api`;
   private PRODUCT_URL: string = 'api/products';
 
-  private cartCount = new BehaviorSubject(0);
-  private cartCount$ = this.cartCount.asObservable();
+  private cartCounter: number = 0;
+  cartCounter$ = new BehaviorSubject(this.cartCounter);
 
   private shoppingCart: Product[] = [];
-  shoppingCart$ = new BehaviorSubject<Product[]>([]);
+  shoppingCart$ = new BehaviorSubject<Product[]>(this.shoppingCart);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -49,30 +49,6 @@ export class ProductsService {
     );
   }
 
-  public getCartCount(): Observable<number> {
-    return this.cartCount$;
-  }
-
-  public setCartCount(latestValue: number) {
-    return this.cartCount.next(latestValue);
-  }
-
-  private incCartCounter() {
-    let cartCounts = 0;
-
-    this.cartCount$.subscribe((cartCount) => (cartCounts = cartCount));
-
-    this.setCartCount(cartCounts + 1);
-  }
-
-  private decCartCounter() {
-    let cartCounts = 0;
-
-    this.cartCount$.subscribe((cartCount) => (cartCounts = cartCount));
-
-    this.setCartCount(cartCounts - 1);
-  }
-
   public addToShoppingCart(product: Product) {
     const headers = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -85,7 +61,8 @@ export class ProductsService {
           if (data && data.id === product.id) {
             this.shoppingCart.push(data);
             this.shoppingCart$.next(this.shoppingCart);
-            this.incCartCounter();
+            this.cartCounter++;
+            this.cartCounter$.next(this.cartCounter);
           }
         }, catchError(this.errorHandler))
       );
@@ -99,7 +76,8 @@ export class ProductsService {
           let updatedCart = this.shoppingCart.filter((product) => product.id !== productId);
           this.shoppingCart = updatedCart;
           this.shoppingCart$.next(this.shoppingCart);
-          this.decCartCounter();
+          this.cartCounter--;
+          this.cartCounter$.next(this.cartCounter);
         }),
         catchError(this.errorHandler)
       );

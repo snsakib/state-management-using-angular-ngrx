@@ -8,11 +8,11 @@ import { ProductsService } from './products.service';
 })
 export class AppComponent implements OnInit {
   title = 'book-store';
-  cartTotal = 0;
+  cartCounter = 0;
 
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.productsService.getCartCount().subscribe((cartCount) => this.cartTotal = cartCount);
+    this.productsService.cartCounter$.subscribe((data) => this.cartCounter = data);
   }
 }

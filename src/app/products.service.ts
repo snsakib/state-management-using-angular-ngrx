@@ -13,6 +13,9 @@ export class ProductsService {
   private cartCount = new BehaviorSubject(0);
   private cartCount$ = this.cartCount.asObservable();
 
+  private shoppingCart: Product[] = [];
+  shoppingCart$ = new BehaviorSubject<Product[]>([]);
+
   constructor(private httpClient: HttpClient) {}
 
   public getProducts(): Observable<Product[]> {
@@ -44,12 +47,6 @@ export class ProductsService {
       `${this.PRODUCT_URL}/${product.id}`,
       product
     );
-  }
-
-  public getShoppingCart(): Observable<Product[]> {
-    return this.httpClient
-      .get<Product[]>(`${this.BASE_URL}/shoppingCart`)
-      .pipe(catchError(this.errorHandler));
   }
 
   public getCartCount(): Observable<number> {
@@ -86,6 +83,8 @@ export class ProductsService {
       .pipe(
         tap((data) => {
           if (data && data.id === product.id) {
+            this.shoppingCart.push(data);
+            this.shoppingCart$.next(this.shoppingCart);
             this.incCartCounter();
           }
         }, catchError(this.errorHandler))
@@ -96,7 +95,12 @@ export class ProductsService {
     return this.httpClient
       .delete<Product>(`${this.BASE_URL}/shoppingCart/${productId}`)
       .pipe(
-        tap(() => this.decCartCounter()), 
+        tap(() => {
+          let updatedCart = this.shoppingCart.filter((product) => product.id !== productId);
+          this.shoppingCart = updatedCart;
+          this.shoppingCart$.next(this.shoppingCart);
+          this.decCartCounter();
+        }),
         catchError(this.errorHandler)
       );
   }

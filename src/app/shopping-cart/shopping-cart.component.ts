@@ -18,9 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getShoppingCart() {
-    this.productsService.getShoppingCart().subscribe((data) => {
-      this.cart = data;
-    });
+    this.productsService.shoppingCart$.subscribe((data) => this.cart = data);
   }
 
   deleteProduct(id: number) {

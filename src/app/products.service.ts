@@ -11,10 +11,10 @@ export class ProductsService {
   private PRODUCT_URL: string = 'api/products';
 
   private cartCounter: number = 0;
-  cartCounter$ = new BehaviorSubject(this.cartCounter);
+  cartCounter$ = new BehaviorSubject(0);
 
   private shoppingCart: Product[] = [];
-  shoppingCart$ = new BehaviorSubject<Product[]>(this.shoppingCart);
+  shoppingCart$ = new BehaviorSubject<Product[]>([]);
 
   constructor(private httpClient: HttpClient) {}
 

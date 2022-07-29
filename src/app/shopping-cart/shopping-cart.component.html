@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card *ngFor="let product of cart">
+  <mat-card *ngFor="let product of cart.products">
     <div class="product-img">
       <img src="{{ product.imgUrl }}">
     </div>
@@ -11,30 +11,32 @@
       <div class="product-quantity">
         <mat-form-field appearance="fill">
           <mat-label>Quantity</mat-label>
-          <mat-select [(value)]="selected">
-            <mat-option value="1">1</mat-option>
-            <mat-option value="2">2</mat-option>
-            <mat-option value="3">3</mat-option>
-          </mat-select>
+          <input matInput type="number" [(ngModel)]="product.cart">
         </mat-form-field>
       </div>
       <div class="product-price">
-        <h1>$ {{ product.price }}</h1>
+        <h1>{{ product.price * product.cart | currency: 'USD'  }}</h1>
       </div>
       <div class="product-actions">
-        <mat-icon aria-hidden="false" aria-label="Update icon">autorenew</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Update icon" (click)="updateProduct(product)">autorenew</mat-icon>
         <mat-icon aria-hidden="false" aria-label="Delete icon" (click)="deleteProduct(product.id)">delete</mat-icon>
       </div>
     </div>
   </mat-card>
-  <!-- <mat-card>
+  <mat-card *ngIf="cart.products.length else empty">
     <div id="total-info">
       <div></div>
       <div></div>
       <h1>
-        Total: $ {{ total }}
+        Total: {{ cart.total | currency: 'USD' }}
       </h1>
       <div></div>
     </div>
-  </mat-card> -->
+  </mat-card>
+  <ng-template #empty>
+    <div class="empty-cart">
+      <h1>Cart is empty!</h1>
+      <button mat-flat-button color="primary" [routerLink]="['/']">Continue Shopping</button>
+    </div>
+  </ng-template>
 </div>

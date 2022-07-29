@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
+import { Cart, Product } from '../product';
 import { ProductsService } from '../products.service';
 
 @Component({
@@ -8,8 +8,10 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
-  cart: Product[] = [];
-  selected: string = '1';
+  cart: Cart = {
+    products: [],
+    total: 0
+  };
 
   constructor(private productsService: ProductsService) {}
 
@@ -23,5 +25,9 @@ export class ShoppingCartComponent implements OnInit {
 
   deleteProduct(id: number) {
     this.productsService.deleteFromShoppingCart(id).subscribe();
+  }
+
+  updateProduct(product: Product) {
+    this.productsService.updateShoppingCartItem(product).subscribe();
   }
 }

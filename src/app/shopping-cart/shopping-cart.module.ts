@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ShoppingCartComponent],
@@ -13,8 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     ShoppingCartRoutingModule,
     MatCardModule,
-    MatSelectModule,
+    MatInputModule,
     MatIconModule,
+    MatButtonModule,
+    FormsModule
   ],
 })
 export class ShoppingCartModule {}

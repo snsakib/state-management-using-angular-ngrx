@@ -40,6 +40,12 @@ mat-card {
 
 mat-icon {
   color: red;
+  cursor: pointer;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 50px;
 }
 
 @media only screen and (min-width: 600px ) {

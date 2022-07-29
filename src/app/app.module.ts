@@ -9,6 +9,8 @@ import { ProductsComponent } from './products/products.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { productsReducer } from './products/state/products.reducers';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularMaterialModule,
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(DataService),
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ products: productsReducer })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,6 +6,7 @@ export interface Product {
   imgUrl: string;
   price: number;
   quantity: number;
+  cart: number
 }
 
 export interface Cart {

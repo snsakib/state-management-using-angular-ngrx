@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
     imgUrl: '',
     quantity: 0,
     price: 0,
+    cart: 0
   };
 
   constructor(
@@ -38,6 +39,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.productService.addToShoppingCart(product).subscribe();
+    let updatedProduct = {...product, cart: product.cart + 1};
+    this.productService.addToShoppingCart(updatedProduct).subscribe();
   }
 }

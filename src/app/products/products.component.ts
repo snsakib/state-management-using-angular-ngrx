@@ -22,7 +22,8 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product) {
     if (product) {
-      this.productsService.addToShoppingCart(product).subscribe();
+      let updatedProduct = {...product, cart: product.cart + 1};
+      this.productsService.addToShoppingCart(updatedProduct).subscribe();
     }
   }
 

@@ -7,7 +7,7 @@
     <span><a routerLink="/">Book Store</a></span>
   <div class="spacer"></div>
   <a routerLink="/shopping-cart">
-    <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+    <mat-icon matBadge="{{ cartCounter }}" matBadgeColor="warn">shopping_cart</mat-icon>
   </a>
   <!-- <mat-icon aria-hidden="false" aria-label="account icon">account_circle</mat-icon> -->
 </div>

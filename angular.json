@@ -110,6 +110,9 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "warnings": {
+      "versionMismatch": false
+    }
   }
 }

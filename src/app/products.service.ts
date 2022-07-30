@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
-import { Product } from './product';
 
 @Injectable({
   providedIn: 'root',
@@ -12,63 +11,63 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getProducts(): Observable<Product[]> {
+  public getProducts(): Observable<any> {
     return this.httpClient
-      .get<Product[]>(this.PRODUCT_URL)
+      .get<any>(this.PRODUCT_URL)
       .pipe(catchError(this.errorHandler));
   }
 
-  public getProduct(productId: number): Observable<Product> {
+  public getProduct(productId: number): Observable<any> {
     return this.httpClient
-      .get<Product>(`${this.PRODUCT_URL}/${productId}`)
+      .get<any>(`${this.PRODUCT_URL}/${productId}`)
       .pipe(catchError(this.errorHandler));
   }
 
-  public createProduct(product: Product): Observable<Product> {
+  public createProduct(product: any): Observable<any> {
     return this.httpClient
-      .post<Product>(`${this.PRODUCT_URL}`, product)
+      .post<any>(`${this.PRODUCT_URL}`, product)
       .pipe(catchError(this.errorHandler));
   }
 
-  public deleteProduct(productId: number): Observable<Product> {
+  public deleteProduct(productId: number): Observable<any> {
     return this.httpClient
-      .delete<Product>(`${this.PRODUCT_URL}/${productId}`)
+      .delete<any>(`${this.PRODUCT_URL}/${productId}`)
       .pipe(catchError(this.errorHandler));
   }
 
-  public updateProduct(product: Product): Observable<Product> {
-    return this.httpClient.put<Product>(
+  public updateProduct(product: any): Observable<any> {
+    return this.httpClient.put<any>(
       `${this.PRODUCT_URL}/${product.id}`,
       product
     );
   }
 
-  public getShoppingCart(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.BASE_URL}/shoppingCart`).pipe(
+  public getShoppingCart(): Observable<any> {
+    return this.httpClient.get<any>(`${this.BASE_URL}/shoppingCart`).pipe(
       catchError(this.errorHandler)
     );
   }
 
-  public addToShoppingCart(product: Product) {
+  public addToShoppingCart(product: any) {
     const headers = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
     return this.httpClient
-      .post<Product>(`${this.BASE_URL}/shoppingCart`, product, headers)
+      .post<any>(`${this.BASE_URL}/shoppingCart`, product, headers)
       .pipe(
         catchError(this.errorHandler)
       );
   }
 
-  public deleteFromShoppingCart(productId: number): Observable<Product> {
-    return this.httpClient.delete<Product>(
+  public deleteFromShoppingCart(productId: number): Observable<any> {
+    return this.httpClient.delete<any>(
       `${this.BASE_URL}/shoppingCart/${productId}`
     );
   }
 
-  public updateShoppingCartItem(productId: number): Observable<Product> {
+  public updateShoppingCartItem(productId: number): Observable<any> {
     let product = this.getProduct(productId);
-    return this.httpClient.put<Product>(
+    return this.httpClient.put<any>(
       `${this.BASE_URL}/shoppingCart/${productId}`,
       product
     );

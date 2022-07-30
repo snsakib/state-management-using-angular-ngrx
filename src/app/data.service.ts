@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Product } from './product';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +8,7 @@ export class DataService implements InMemoryDbService {
   constructor() {}
 
   createDb() {
-    let products: Product[] = [
+    let products: any = [
       {
         id: 1,
         title: 'Atomic Habits',
@@ -92,7 +91,7 @@ export class DataService implements InMemoryDbService {
       },
     ];
 
-    let shoppingCart: Product[] = [];
+    let shoppingCart: any = [];
 
     return { products, shoppingCart };
   }

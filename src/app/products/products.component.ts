@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { Product } from '../product';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [];
+  products: any = [];
 
   constructor(private productsService: ProductsService) {}
 
@@ -15,7 +14,7 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  addToCart(product: Product) {
+  addToCart(product: any) {
     if (product) {
       this.productsService.addToShoppingCart(product).subscribe();
     }
@@ -24,6 +23,6 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.productsService
       .getProducts()
-      .subscribe((products: Product[]) => (this.products = products));
+      .subscribe((products: any) => (this.products = products));
   }
 }

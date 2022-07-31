@@ -9,14 +9,12 @@ import { getProductsSelector } from './state/products.selectors';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: any = [];
+  products$: any = this.store.select<any>(getProductsSelector);
 
   constructor(private store: Store, private productsService: ProductsService) {}
 
   ngOnInit() {
     this.getProducts();
-
-    this.store.select(getProductsSelector).subscribe((products: any) => this.products = products.data)
   }
 
   getProducts() {

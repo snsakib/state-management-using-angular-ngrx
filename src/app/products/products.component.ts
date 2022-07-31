@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../products.service';
-import { Product } from '../product';
 import { Store } from '@ngrx/store';
 import { getProductsAction } from './state/products.actions';
 import { getProductsSelector } from './state/products.selectors';
@@ -10,7 +9,7 @@ import { getProductsSelector } from './state/products.selectors';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [];
+  products: any = [];
 
   constructor(private store: Store, private productsService: ProductsService) {}
 
@@ -20,15 +19,9 @@ export class ProductsComponent implements OnInit {
     this.store.select(getProductsSelector).subscribe((products: any) => this.products = products.data)
   }
 
-  addToCart(product: Product) {
-    if (product) {
-      this.productsService.addToShoppingCart(product).subscribe();
-    }
-  }
-
   getProducts() {
     this.productsService
       .getProducts()
-      .subscribe((products: Product[]) => (this.store.dispatch(getProductsAction({ data: products}))));
+      .subscribe((products: any) => (this.store.dispatch(getProductsAction({ products }))));
   }
 }

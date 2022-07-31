@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Product } from './product';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +8,7 @@ export class DataService implements InMemoryDbService {
   constructor() {}
 
   createDb() {
-    let products: Product[] = [
+    let products: any = [
       {
         id: 1,
         title: 'Atomic Habits',
@@ -19,6 +18,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/atomic-habit.jpg',
         quantity: 500,
         price: 11.98,
+        cart: 0
       },
       {
         id: 2,
@@ -29,6 +29,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/the-pragmatic-programmer.jpg',
         quantity: 146,
         price: 38.99,
+        cart: 0
       },
       {
         id: 3,
@@ -39,6 +40,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/clean-code.jpg',
         quantity: 453,
         price: 30.18,
+        cart: 0
       },
       {
         id: 4,
@@ -49,6 +51,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/cracking-pm-interview.jpg',
         quantity: 124,
         price: 37.18,
+        cart: 0
       },
       {
         id: 5,
@@ -59,6 +62,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/5-am-club.jpg',
         quantity: 124,
         price: 24.38,
+        cart: 0
       },
       {
         id: 6,
@@ -69,6 +73,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/7-habits.jpg',
         quantity: 524,
         price: 22.38,
+        cart: 0
       },
       {
         id: 7,
@@ -79,6 +84,7 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/power-of-habit.jpg',
         quantity: 345,
         price: 54.34,
+        cart: 0
       },
       {
         id: 8,
@@ -89,10 +95,11 @@ export class DataService implements InMemoryDbService {
         imgUrl: '../assets/img/deep-work.jpg',
         quantity: 231,
         price: 28.45,
+        cart: 0
       },
     ];
 
-    let shoppingCart: Product[] = [];
+    let shoppingCart: any = [];
 
     return { products, shoppingCart };
   }

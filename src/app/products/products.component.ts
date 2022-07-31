@@ -14,12 +14,6 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  addToCart(product: any) {
-    if (product) {
-      this.productsService.addToShoppingCart(product).subscribe();
-    }
-  }
-
   getProducts() {
     this.productsService
       .getProducts()

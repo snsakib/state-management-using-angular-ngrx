@@ -108,5 +108,11 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false,
+    "warnings": {
+      "versionMismatch": false
+    }
   }
 }

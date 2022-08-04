@@ -43,9 +43,9 @@ export class ProductsService {
   }
 
   public getShoppingCart(): Observable<any> {
-    return this.httpClient.get<any>(`${this.BASE_URL}/shoppingCart`).pipe(
-      catchError(this.errorHandler)
-    );
+    return this.httpClient
+      .get<any>(`${this.BASE_URL}/shoppingCart`)
+      .pipe(catchError(this.errorHandler));
   }
 
   public addToShoppingCart(product: any) {
@@ -54,9 +54,7 @@ export class ProductsService {
     };
     return this.httpClient
       .post<any>(`${this.BASE_URL}/shoppingCart`, product, headers)
-      .pipe(
-        catchError(this.errorHandler)
-      );
+      .pipe(catchError(this.errorHandler));
   }
 
   public deleteFromShoppingCart(productId: number): Observable<any> {

@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 
 export const getProductsAction = createAction(
-  '[Product] Get Products',
+  '[Products] Get Products',
   props<any>()
 )

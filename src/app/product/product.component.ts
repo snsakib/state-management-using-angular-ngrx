@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProductsService } from '../products.service';
 import { getProductAction } from './state/product.actions';
+import { getProductSelector } from './state/product.selectors';
 
 @Component({
   selector: 'app-product',
@@ -11,16 +12,7 @@ import { getProductAction } from './state/product.actions';
 })
 export class ProductComponent implements OnInit {
   id: number = 0;
-  product: any = {
-    id: 0,
-    title: '',
-    author: '',
-    description: '',
-    imgUrl: '',
-    quantity: 0,
-    price: 0,
-    cart: 0
-  };
+  product$ = this.store.select<any>(getProductSelector);
 
   constructor(
     private store: Store,

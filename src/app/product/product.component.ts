@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   };
 
   constructor(
-    private productService: ProductsService,
+    private productsService: ProductsService,
     private route: ActivatedRoute
   ) {}
 
@@ -33,13 +33,13 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct(id: number) {
-    this.productService
+    this.productsService
       .getProduct(id)
       .subscribe((product: Product) => (this.product = product));
   }
 
   addToCart(product: Product) {
     let updatedProduct = {...product, cart: product.cart + 1};
-    this.productService.addToShoppingCart(updatedProduct).subscribe();
+    this.productsService.addToShoppingCart(updatedProduct).subscribe();
   }
 }

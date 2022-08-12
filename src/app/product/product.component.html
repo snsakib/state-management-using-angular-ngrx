@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="img-container">
+    <img src="{{ product.imgUrl }}" alt="{{ product.title }}">
+  </div>
+  <div class="info-container">
+    <h1><b>{{ product.title }}</b></h1>
+    <h2>by <i>{{ product.author }}</i></h2>
+    <p>{{ product.description }}</p>
+    <div class="product-info">
+      <p><i>{{ product.quantity }} {{ product.quantity > 0 ? 'items' : 'item' }} available</i></p>
+      <h2>$ {{ product.price }}</h2>
+    </div>
+    <button mat-flat-button color="primary" class="add-to-cart-btn" (click)="addToCart(product)">Add to Cart</button>
+  </div>
+</div>

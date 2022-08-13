@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Product } from '../product';
 import { ProductsService } from '../products.service';
+import { getProductAction } from './state/product.actions';
+import { getProductSelector } from './state/product.selectors';
 
 @Component({
   selector: 'app-product',
@@ -10,18 +13,10 @@ import { ProductsService } from '../products.service';
 })
 export class ProductComponent implements OnInit {
   id: number = 0;
-  product: Product = {
-    id: 0,
-    title: '',
-    author: '',
-    description: '',
-    imgUrl: '',
-    quantity: 0,
-    price: 0,
-    cart: 0
-  };
+  product$ = this.store.select<any>(getProductSelector);
 
   constructor(
+    private store: Store,
     private productsService: ProductsService,
     private route: ActivatedRoute
   ) {}
@@ -35,7 +30,7 @@ export class ProductComponent implements OnInit {
   getProduct(id: number) {
     this.productsService
       .getProduct(id)
-      .subscribe((product: Product) => (this.product = product));
+      .subscribe((product: any) => (this.store.dispatch(getProductAction(product))));
   }
 
   addToCart(product: Product) {

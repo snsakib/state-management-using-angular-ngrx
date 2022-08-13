@@ -1,4 +1,4 @@
-export const productInitialState = <any>{
+export const productInitialState: any = {
   id: 0,
   title: '',
   author: '',

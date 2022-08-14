@@ -29,6 +29,6 @@ export class ProductComponent implements OnInit {
   getProduct(id: number) {
     this.productsService
       .getProduct(id)
-      .subscribe((product: any) => (this.store.dispatch(getProductAction(product))));
+      .subscribe((product: any) => (this.store.dispatch(getProductAction({ product }))));
   }
 }

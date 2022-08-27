@@ -24,7 +24,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     StoreModule.forRoot({ products: productsReducer }),
     StoreDevtoolsModule.instrument({
-      name: 'Angular NxRx', 
+      name: 'Angular NgRx', 
       maxAge: 25, 
       logOnly: environment.production 
     })

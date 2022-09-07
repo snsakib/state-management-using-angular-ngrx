@@ -1,3 +1,3 @@
-import { Product } from "src/app/app.interfaces";
+import { ProductsState } from "./products.interfaces";
 
-export const productsInitialState: Product[] = []
+export const productsInitialState: ProductsState = []

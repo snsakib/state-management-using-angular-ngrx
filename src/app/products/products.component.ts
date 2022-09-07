@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { getProductsAction } from './state/products.actions';
 import { getProductsSelector } from './state/products.selectors';
 import { AppState, Product } from '../app.interfaces';
-import { ProductsState } from './state/products.interfaces';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

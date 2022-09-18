@@ -1,4 +1,5 @@
-import { ProductsState } from "./products/state/products.interfaces";
+import { ProductState } from './product/state/product.interfaces';
+import { ProductsState } from './products/state/products.interfaces';
 
 export interface Product {
   id: number;
@@ -8,9 +9,10 @@ export interface Product {
   imgUrl: string;
   price: number;
   quantity: number;
-  cart: number
+  cart: number;
 }
 
 export interface AppState {
-  products: ProductsState
+  products: ProductsState;
+  product: ProductState;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Product } from '../app.interfaces';
+import { AppState, Product } from '../app.interfaces';
 import { ProductsService } from '../products.service';
 import { getProductAction } from './state/product.actions';
 import { getProductSelector } from './state/product.selectors';
@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   product$ = this.store.select<Product>(getProductSelector);
 
   constructor(
-    private store: Store,
+    private store: Store<AppState>,
     private productsService: ProductsService,
     private route: ActivatedRoute
   ) {}

@@ -13,7 +13,7 @@ import { getProductSelector } from './state/product.selectors';
 })
 export class ProductComponent implements OnInit {
   id: number = 0;
-  product$ = this.store.select<any>(getProductSelector);
+  product$ = this.store.select<Product>(getProductSelector);
 
   constructor(
     private store: Store,

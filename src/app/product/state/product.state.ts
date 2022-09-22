@@ -1,6 +1,6 @@
-import { Product } from 'src/app/app.interfaces';
+import { ProductState } from './product.interfaces';
 
-export const productInitialState: Product = {
+export const productInitialState: ProductState = {
   id: 0,
   title: '',
   author: '',

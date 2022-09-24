@@ -1,4 +1,3 @@
-import { ProductState } from './product/state/product.interfaces';
 import { ProductsState } from './products/state/products.interfaces';
 
 export interface Product {
@@ -14,5 +13,4 @@ export interface Product {
 
 export interface AppState {
   products: ProductsState;
-  product: ProductState;
 }

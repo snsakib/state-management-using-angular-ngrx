@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState, Product } from '../app.interfaces';
+import { Product } from '../app.interfaces';
 import { ProductsService } from '../products.service';
 import { getProductAction } from './state/product.actions';
+import { AppState } from './state/product.interfaces';
 import { getProductSelector } from './state/product.selectors';
 
 @Component({

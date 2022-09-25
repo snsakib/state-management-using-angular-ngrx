@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Product } from '../app.interfaces';
-import { ProductsService } from '../products.service';
 import { getProductAction } from './state/product.actions';
 import { AppState } from './state/product.interfaces';
-import { getProductSelector } from './state/product.selectors';
+import { getProductInfoSelector } from './state/product.selectors';
 
 @Component({
   selector: 'app-product',
@@ -14,11 +13,10 @@ import { getProductSelector } from './state/product.selectors';
 })
 export class ProductComponent implements OnInit {
   id: number = 0;
-  product$ = this.store.select<Product>(getProductSelector);
+  product$ = this.store.select<Product | undefined>(getProductInfoSelector);
 
   constructor(
     private store: Store<AppState>,
-    private productsService: ProductsService,
     private route: ActivatedRoute
   ) {}
 
@@ -29,8 +27,6 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct(id: number) {
-    this.productsService
-      .getProduct(id)
-      .subscribe((product: Product) => (this.store.dispatch(getProductAction({ product }))));
+    this.store.dispatch(getProductAction({ id }));
   }
 }

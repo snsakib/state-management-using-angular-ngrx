@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Product } from './product';
+import { Product } from './app.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -77,7 +77,7 @@ export class DataService implements InMemoryDbService {
       },
     ];
 
-    let shoppingCart: Product[] = [];
+    let shoppingCart: any = [];
 
     return { products, shoppingCart };
   }

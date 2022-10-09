@@ -8,7 +8,7 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { Cart, Product } from './product';
+import { Cart, Product } from './app.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +85,7 @@ export class ProductsService {
       .pipe(
         tap(() => {
           let updatedCart = this.shoppingCart.products.filter(
-            (product) => product.id !== productId
+            (product: Product) => product.id !== productId
           );
           this.shoppingCart.products = updatedCart;
           this.calculateCartTotal();
@@ -109,7 +109,7 @@ export class ProductsService {
 
   public calculateCartTotal() {
     this.shoppingCart.total = 0;
-    this.shoppingCart.products.forEach((product) => {
+    this.shoppingCart.products.forEach((product: Product) => {
       this.shoppingCart.total += product.price * product.cart;
     });
   }

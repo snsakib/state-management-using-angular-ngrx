@@ -1,1 +1,3 @@
-export const productsInitialState = <any>[]
+import { ProductsState } from "./products.interfaces";
+
+export const productsInitialState: ProductsState = []

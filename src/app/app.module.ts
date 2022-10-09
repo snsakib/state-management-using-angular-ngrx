@@ -24,10 +24,9 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     StoreModule.forRoot({ products: productsReducer }),
     StoreDevtoolsModule.instrument({
-      name: 'Angular NgRx', 
+      name: "Angular NgRx", 
       maxAge: 25, 
-      logOnly: environment.production 
-    })
+      logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent],

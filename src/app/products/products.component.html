@@ -10,7 +10,8 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-stroked-button color="primary" class="details-btn">View Details</a>
+      <a mat-stroked-button color="primary" class="details-btn" routerLink="/product/{{ product.id }}"
+        routerLinkActive="active" ariaCurrentWhenActive="page">View Details</a>
       <button mat-flat-button color="primary" class="add-to-cart-btn">Add to Cart</button>
     </mat-card-actions>
   </mat-card>

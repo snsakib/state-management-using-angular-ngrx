@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, mergeMap } from "rxjs";
 import { Product } from "src/app/app.interfaces";
 import { ProductsService } from "src/app/products.service";
-import { getProductsAction, loadProductsSuccess } from "./products.actions";
+import { loadProductsAction, getProductsAction } from "./products.actions";
 
 @Injectable()
 export class ProductsEffects {
@@ -15,9 +15,9 @@ export class ProductsEffects {
 
   loadProducts$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(getProductsAction),
+      ofType(loadProductsAction),
       mergeMap(action => this.productsService.getProducts().pipe(
-        map((products: Product[]) => loadProductsSuccess({ products }))
+        map((products: Product[]) => getProductsAction({ products }))
       ))
     )
   })

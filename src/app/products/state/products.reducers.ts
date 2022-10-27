@@ -1,7 +1,10 @@
 import { createReducer, on } from "@ngrx/store";
+import { ProductsService } from "src/app/products.service";
 import { loadProductsAction, getProductsAction } from "./products.actions";
 import { ProductsState } from "./products.interfaces";
 import { productsInitialState } from "./products.state";
+
+let productsService = new ProductsService();
 
 export const productsReducer = createReducer<ProductsState>(
   productsInitialState,
@@ -9,6 +12,6 @@ export const productsReducer = createReducer<ProductsState>(
     return { ...state }
   }),
   on(getProductsAction, (state, action): ProductsState => {
-    return action.products
+    return ProductsService.getProducts
   })
 )

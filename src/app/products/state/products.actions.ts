@@ -6,11 +6,10 @@ export const loadProductsAction = createAction(
 )
 
 export const getProductsAction = createAction(
-  '[Products] Get Products',
-  props<{ products: Product[] }>()
+  '[Products] Get Products'
 )
 
-export const loadProductsFailure = createAction(
-  '[Products] Load Products Failure',
-  props<{ error: string }>()
-)
+// export const loadProductsFailure = createAction(
+//   '[Products] Load Products Failure',
+//   props<{ error: string }>()
+// )

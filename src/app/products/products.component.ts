@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getProductsSelector } from './state/products.selectors';
 import { AppState, Product } from '../app.interfaces';
+import { loadProductsAction } from './state/products.actions';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -18,5 +19,7 @@ export class ProductsComponent implements OnInit {
     this.getProducts();
   }
 
-  getProducts() { }
+  getProducts() { 
+    this.store.dispatch(loadProductsAction())
+  }
 }

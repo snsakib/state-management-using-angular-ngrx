@@ -5,3 +5,7 @@ export const getProductsAction = createAction(
   '[Products] Get Products',
   props<{ products: Product[] }>()
 )
+
+export const loadProductsAction = createAction(
+  '[Products] Load Products'
+)

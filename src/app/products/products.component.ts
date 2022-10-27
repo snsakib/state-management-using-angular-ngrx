@@ -18,6 +18,6 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.store.dispatch(getProductsAction());
+    this.store.dispatch(loadProductsAction());
   }
 }

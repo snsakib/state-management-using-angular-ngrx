@@ -7,6 +7,6 @@ export const productsReducer = createReducer<ProductsState>(
   productsInitialState,
   on(getProductsAction, (state, { products }): ProductsState => products),
   on(loadProductsAction, (state): ProductsState => {  
-    return { ...state }
+    return [ ...state ];
   }),
 )

@@ -11,6 +11,5 @@
   )
   
   export const getErrorAction = createAction(
-    '[Products] Load Products Error',
-    props<{ error: string }>()
+    '[Products] Load Products Error'
   )

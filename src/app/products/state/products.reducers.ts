@@ -10,6 +10,6 @@ export const productsReducer = createReducer<ProductsState>(
     return [ ...state ];
   }),
   on(getErrorAction, (state): ProductsState => {
-    return [ ...state ]
+    return [ ...state ];
   })
 )

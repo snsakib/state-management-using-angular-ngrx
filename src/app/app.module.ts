@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './products/state/products.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
@@ -26,7 +27,8 @@ import { environment } from '../environments/environment';
     StoreDevtoolsModule.instrument({
       name: "Angular NgRx", 
       maxAge: 25, 
-      logOnly: environment.production })
+      logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent],

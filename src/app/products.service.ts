@@ -8,7 +8,7 @@ import { Product } from './app.interfaces';
 })
 export class ProductsService {
   private BASE_URL: string = `api`;
-  private PRODUCT_URL: string = 'api/products';
+  private PRODUCT_URL: string = 'api/products123';
 
   private cartCounter: number = 0;
   cartCounter$ = new BehaviorSubject(0);

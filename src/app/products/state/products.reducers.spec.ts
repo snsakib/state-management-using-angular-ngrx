@@ -3,7 +3,7 @@ import { getProductsAction } from './products.actions';
 import { productsReducer } from './products.reducers';
 import { productsInitialState } from './products.state';
 
-describe('ProductsReducers: getProductsAction', () => {
+describe('productsReducer: getProductsAction', () => {
   it('should update the state in an immutable way', () => {
     const newState: Product[] = [
       {

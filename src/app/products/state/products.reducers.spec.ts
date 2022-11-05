@@ -4,7 +4,7 @@ import { productsReducer } from './products.reducers';
 import { productsInitialState } from './products.state';
 
 describe('productsReducer: getProductsAction', () => {
-  it('should perform immutable state update', () => {
+  it('should update the state', () => {
     const newState: Product[] = [
       {
         id: 1,

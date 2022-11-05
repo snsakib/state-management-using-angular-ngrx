@@ -3,7 +3,7 @@ import { getProductsSelector } from './products.selectors';
 
 describe('getProductsSelector', () => {
   it('should select the products slice', () => {
-    const initialState: Product[] = [
+    const mockState: Product[] = [
       {
         id: 1,
         title: 'The Angular Masterclass',
@@ -16,8 +16,8 @@ describe('getProductsSelector', () => {
       }
     ];
 
-    const result = getProductsSelector.projector(initialState);
-    
-    expect(result).toEqual(initialState);
+    const result = getProductsSelector.projector(mockState);
+
+    expect(result).toEqual(mockState);
   });
 });

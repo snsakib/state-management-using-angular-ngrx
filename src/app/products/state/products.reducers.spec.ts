@@ -4,7 +4,7 @@ import { productsReducer } from './products.reducers';
 import { productsInitialState } from './products.state';
 
 describe('productsReducer: getProductsAction', () => {
-  it('should update the state in an immutable way', () => {
+  it('should perform immutable state update', () => {
     const newState: Product[] = [
       {
         id: 1,
@@ -21,6 +21,5 @@ describe('productsReducer: getProductsAction', () => {
     const state = productsReducer(productsInitialState, action);
 
     expect(state).toEqual(newState);
-    expect(state).not.toBe(newState);
   });
 });

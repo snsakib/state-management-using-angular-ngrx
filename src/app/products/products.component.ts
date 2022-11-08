@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
 import { Store } from '@ngrx/store';
-import { getProductsAction } from './state/products.actions';
 import { getProductsSelector } from './state/products.selectors';
 import { AppState, Product } from '../app.interfaces';
+import { loadProductsAction } from './state/products.actions';
+import { ProductsService } from '../products.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,7 +12,10 @@ import { AppState, Product } from '../app.interfaces';
 export class ProductsComponent implements OnInit {
   products$ = this.store.select<Product[]>(getProductsSelector);
 
-  constructor(private store: Store<AppState>, private productsService: ProductsService) {}
+  constructor(
+    private store: Store<AppState>,
+    private productsService: ProductsService
+  ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -25,9 +28,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  getProducts() {
-    this.productsService
-      .getProducts()
-      .subscribe((products: Product[]) => (this.store.dispatch(getProductsAction({ products }))));
+  getProducts() { 
+    this.store.dispatch(loadProductsAction())
   }
 }

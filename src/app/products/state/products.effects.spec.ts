@@ -1,16 +1,18 @@
-import { TestBed } from "@angular/core/testing"
-import { Actions } from "@ngrx/effects";
-import { provideMockActions } from "@ngrx/effects/testing";
-import { TestScheduler } from "rxjs/testing";
-import { Product } from "src/app/app.interfaces";
-import { ProductsService } from "src/app/products.service";
-import { getProductsAction, loadProductsAction } from "./products.actions";
-import { ProductsEffects } from "./products.effects";
+import { TestBed } from '@angular/core/testing';
+import { Actions } from '@ngrx/effects';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { TestScheduler } from 'rxjs/testing';
+import { Product } from 'src/app/app.interfaces';
+import { ProductsService } from 'src/app/products.service';
+import { getProductsAction, loadProductsAction } from './products.actions';
+import { ProductsEffects } from './products.effects';
 
 describe('ProductsEffects: loadProducts$', () => {
   let effects: ProductsEffects;
   let actions$: Actions;
-  let productsServiceSpy = jasmine.createSpyObj('ProductsService', ['getProducts']);
+  let productsServiceSpy = jasmine.createSpyObj('ProductsService', [
+    'getProducts',
+  ]);
   let testScheduler: TestScheduler;
 
   beforeEach(() => {
@@ -18,12 +20,12 @@ describe('ProductsEffects: loadProducts$', () => {
       providers: [
         ProductsEffects,
         provideMockActions(() => actions$),
-        { provide: ProductsService, useValue: productsServiceSpy }
-      ]
+        { provide: ProductsService, useValue: productsServiceSpy },
+      ],
     });
 
     effects = TestBed.inject(ProductsEffects);
-    
+
     testScheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
@@ -40,7 +42,7 @@ describe('ProductsEffects: loadProducts$', () => {
         quantity: 124,
         price: 24.38,
         cart: 0,
-      }
+      },
     ];
     let action = loadProductsAction();
     let outcome = getProductsAction({ products });
@@ -51,9 +53,7 @@ describe('ProductsEffects: loadProducts$', () => {
 
       productsServiceSpy.getProducts.and.returnValue(response);
 
-      expectObservable(effects.loadProducts$).toBe('--c', { c: outcome })
-    })
+      expectObservable(effects.loadProducts$).toBe('--c', { c: outcome });
+    });
   });
-
-  
-})
+});

@@ -29,7 +29,7 @@ describe('ProductsEffects: loadProducts$', () => {
     });
   });
 
-  it('should handle loadProductsAction and return getProductsAction', () => {
+  it('should handle loadProductsAction and return getProductsAction on success', () => {
     const products: Product[] = [
       {
         id: 1,

@@ -5,7 +5,7 @@ import { TestScheduler } from "rxjs/testing";
 import { ProductsService } from "src/app/products.service";
 import { ProductsEffects } from "./products.effects";
 
-describe('ProductsEffects', () => {
+describe('ProductsEffects: loadProducts$', () => {
   let effects: ProductsEffects;
   let actions$: Actions;
   let productsServiceSpy = jasmine.createSpyObj('ProductsService', ['getProducts']);

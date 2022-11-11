@@ -45,15 +45,15 @@ describe('ProductsEffects: loadProducts$', () => {
       },
     ];
     let action = loadProductsAction();
-    let outcome = getProductsAction({ products });
+    let originalResponse = getProductsAction({ products });
 
     testScheduler.run(({ hot, cold, expectObservable }) => {
       actions$ = hot('-a', { a: action });
-      let response = cold('-b|', { b: products });
+      let mockResponse = cold('-b|', { b: products });
 
-      productsServiceSpy.getProducts.and.returnValue(response);
+      productsServiceSpy.getProducts.and.returnValue(mockResponse);
 
-      expectObservable(effects.loadProducts$).toBe('--c', { c: outcome });
+      expectObservable(effects.loadProducts$).toBe('--c', { c: originalResponse });
     });
   });
 });

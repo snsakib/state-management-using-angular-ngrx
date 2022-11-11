@@ -4,7 +4,11 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { TestScheduler } from 'rxjs/testing';
 import { Product } from 'src/app/app.interfaces';
 import { ProductsService } from 'src/app/products.service';
-import { getProductsAction, loadProductsAction } from './products.actions';
+import {
+  getErrorAction,
+  getProductsAction,
+  loadProductsAction,
+} from './products.actions';
 import { ProductsEffects } from './products.effects';
 
 describe('ProductsEffects: loadProducts$', () => {
@@ -53,7 +57,23 @@ describe('ProductsEffects: loadProducts$', () => {
 
       productsServiceSpy.getProducts.and.returnValue(mockResponse);
 
-      expectObservable(effects.loadProducts$).toBe('--c', { c: originalResponse });
+      expectObservable(effects.loadProducts$).toBe('--c', {
+        c: originalResponse,
+      });
+    });
+  });
+
+  it('should handle loadProductsAction and return getErrorAction action on failure', () => {
+    const action = loadProductsAction();
+    const error = new Error();
+    const outcome = getErrorAction();
+
+    testScheduler.run(({ hot, cold, expectObservable }) => {
+      actions$ = hot('-a|', { a: action });
+      const response = cold('-#|)', {}, error);
+      productsServiceSpy.getProducts.and.returnValue(response);
+
+      expectObservable(effects.loadProducts$).toBe('--(b|)', { b: outcome });
     });
   });
 });

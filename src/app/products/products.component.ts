@@ -23,12 +23,12 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: Product) {
     if (product) {
-      let updatedProduct = {...product, cart: product.cart + 1};
+      let updatedProduct = { ...product, cart: product.cart + 1 };
       this.productsService.addToShoppingCart(updatedProduct).subscribe();
     }
   }
 
-  getProducts() { 
-    this.store.dispatch(loadProductsAction())
+  getProducts() {
+    this.store.dispatch(loadProductsAction());
   }
 }

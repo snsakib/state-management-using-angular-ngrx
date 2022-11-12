@@ -54,26 +54,23 @@ describe('ProductsEffects: loadProducts$', () => {
     testScheduler.run(({ hot, cold, expectObservable }) => {
       actions$ = hot('-a', { a: action });
       let mockResponse = cold('-b|', { b: products });
-
       productsServiceSpy.getProducts.and.returnValue(mockResponse);
 
-      expectObservable(effects.loadProducts$).toBe('--c', {
-        c: originalResponse,
-      });
+      expectObservable(effects.loadProducts$).toBe('--c', { c: originalResponse });
     });
   });
 
   it('should handle loadProductsAction and return getErrorAction action on failure', () => {
-    const action = loadProductsAction();
-    const error = new Error();
-    const outcome = getErrorAction();
+    let action = loadProductsAction();
+    let error = new Error();
+    let originalResponse = getErrorAction();
 
     testScheduler.run(({ hot, cold, expectObservable }) => {
       actions$ = hot('-a|', { a: action });
-      const response = cold('-#|)', {}, error);
-      productsServiceSpy.getProducts.and.returnValue(response);
+      let mockResponse = cold('-#|', {}, error);
+      productsServiceSpy.getProducts.and.returnValue(mockResponse);
 
-      expectObservable(effects.loadProducts$).toBe('--(b|)', { b: outcome });
+      expectObservable(effects.loadProducts$).toBe('--(c|)', { c: originalResponse });
     });
   });
 });

@@ -1,36 +1,24 @@
 <div class="container">
-  <mat-card *ngFor="let product of cart.products">
-    <div class="product-img">
-      <img src="{{ product.imgUrl }}">
-    </div>
-    <div class="info-container">
+  <mat-card *ngFor="let product of products$ | async">
+    <div class="product-info">
+      <div class="product-img">
+        <img src="{{ product.imgUrl }}">
+      </div>
       <div class="product-title-author">
         <h1>{{ product.title }}</h1>
         <h2>{{ product.author }}</h2>
       </div>
-      <div class="product-quantity">
-        <mat-form-field appearance="fill">
-          <mat-label>Quantity</mat-label>
-          <input matInput type="number" min="0" [(ngModel)]="product.cart">
-        </mat-form-field>
-      </div>
-      <div class="product-price">
-        <h1>{{ product.price * product.cart | currency: 'USD'  }}</h1>
-      </div>
-      <div class="product-actions">
-        <mat-icon aria-hidden="false" aria-label="Update icon" (click)="updateProduct(product)">autorenew</mat-icon>
-        <mat-icon aria-hidden="false" aria-label="Delete icon" (click)="deleteProduct(product.id)">delete</mat-icon>
-      </div>
+    </div>
+    <div class="product-price">
+      <h1>{{ product.price * product.cart | currency: 'USD' }}</h1>
     </div>
   </mat-card>
-  <mat-card *ngIf="cart.products.length else empty">
+  <mat-card *ngIf="(cartCounter$ | async) else empty">
     <div id="total-info">
       <div></div>
-      <div></div>
       <h1>
-        Total: {{ cart.total | currency: 'USD' }}
+        Total: {{ total$ | async | currency: 'USD' }}
       </h1>
-      <div></div>
     </div>
   </mat-card>
   <ng-template #empty>

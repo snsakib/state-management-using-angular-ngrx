@@ -15,21 +15,29 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from './products/state/products.effects';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { ShoppingCartEffects } from './shopping-cart/state/shopping-cart.effects';
+import { shoppingCartReducer } from './shopping-cart/state/shopping-cart.reducers';
 @NgModule({
   declarations: [AppComponent, ProductsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMaterialModule,
+    ShoppingCartModule,
     BrowserAnimationsModule,
     InMemoryWebApiModule.forRoot(DataService),
     HttpClientModule,
-    StoreModule.forRoot({ products: productsReducer }),
+    StoreModule.forRoot({
+      products: productsReducer,
+      cart: shoppingCartReducer,
+    }),
     StoreDevtoolsModule.instrument({
-      name: "Angular NgRx", 
-      maxAge: 25, 
-      logOnly: environment.production }),
-    EffectsModule.forRoot([ProductsEffects])
+      name: 'Angular NgRx',
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([ProductsEffects, ShoppingCartEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -41,7 +41,6 @@ module.exports = function (config) {
         flags: ["--no-sandbox"],
       },
     },
-    singleRun: false,
-    restartOnFileChange: true,
+    singleRun: false
   });
 };

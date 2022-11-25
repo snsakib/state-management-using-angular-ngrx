@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart, Product } from '../app.interfaces';
-import { ProductsService } from '../products.service';
+import { Store } from '@ngrx/store';
+import { Product } from '../app.interfaces';
+import { loadShoppingCartAction } from './state/shopping-cart.actions';
+import { AppState } from './state/shopping-cart.interfaces';
+import {
+  getCartCounterSelector,
+  getCartTotalSelector,
+  getShoppingCartSelector,
+} from './state/shopping-cart.selectors';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,26 +15,17 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
-  cart: Cart = {
-    products: [],
-    total: 0
-  };
+  products$ = this.store.select<Product[]>(getShoppingCartSelector);
+  total$ = this.store.select<number>(getCartTotalSelector);
+  cartCounter$ = this.store.select(getCartCounterSelector);
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.getShoppingCart();
   }
 
   getShoppingCart() {
-    this.productsService.shoppingCart$.subscribe((data) => this.cart = data);
-  }
-
-  deleteProduct(id: number) {
-    this.productsService.deleteFromShoppingCart(id).subscribe();
-  }
-
-  updateProduct(product: Product) {
-    this.productsService.updateShoppingCartItem(product).subscribe();
+    this.store.dispatch(loadShoppingCartAction());
   }
 }

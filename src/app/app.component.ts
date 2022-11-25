@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './products.service';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.interfaces';
+import { getCartCounterSelector } from './shopping-cart/state/shopping-cart.selectors';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +10,9 @@ import { ProductsService } from './products.service';
 })
 export class AppComponent implements OnInit {
   title = 'book-store';
-  cartCounter = 0;
+  cartCounter$ = this.store.select(getCartCounterSelector);
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit() {
-    this.productsService.cartCounter$.subscribe((data) => this.cartCounter = data);
-  }
+  ngOnInit() {}
 }

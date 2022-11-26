@@ -1,33 +1,33 @@
 import { createReducer, on } from '@ngrx/store';
 import {
   addToCartAction,
-  addToCartErrorAction,
-  getShoppingCartAction,
-  initiateAddToCartAction,
+  addToCartFailureAction,
+  addToCartSuccessAction,
   loadShoppingCartAction,
-  shoppingCartErrorAction,
+  loadShoppingCartFailureAction,
+  loadShoppingCartSuccessAction
 } from './shopping-cart.actions';
 import { ShoppingCartState } from './shopping-cart.interfaces';
 import { shoppingCartInitialState } from './shopping-cart.state';
 
 export const shoppingCartReducer = createReducer<ShoppingCartState>(
   shoppingCartInitialState,
-  on(initiateAddToCartAction, (state): ShoppingCartState => {
+  on(addToCartAction, (state): ShoppingCartState => {
     return [...state];
   }),
-  on(addToCartAction, (state, { product }): ShoppingCartState => {
+  on(addToCartSuccessAction, (state, { product }): ShoppingCartState => {
     return [...state, product];
   }),
-  on(addToCartErrorAction, (state): ShoppingCartState => {
+  on(addToCartFailureAction, (state): ShoppingCartState => {
     return [...state];
   }),
   on(loadShoppingCartAction, (state): ShoppingCartState => {
     return [...state];
   }),
-  on(getShoppingCartAction, (state, { products }): ShoppingCartState => {
+  on(loadShoppingCartSuccessAction, (state, { products }): ShoppingCartState => {
     return [...products];
   }),
-  on(shoppingCartErrorAction, (state): ShoppingCartState => {
+  on(loadShoppingCartFailureAction, (state): ShoppingCartState => {
     return [...state];
   })
 );

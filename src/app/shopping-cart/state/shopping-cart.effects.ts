@@ -4,12 +4,12 @@ import { catchError, map, mergeMap, of, tap } from 'rxjs';
 import { Product } from 'src/app/app.interfaces';
 import { ProductsService } from 'src/app/products.service';
 import {
+  addToCartSuccessAction,
+  addToCartFailureAction,
   addToCartAction,
-  addToCartErrorAction,
-  getShoppingCartAction,
-  initiateAddToCartAction,
   loadShoppingCartAction,
-  shoppingCartErrorAction,
+  loadShoppingCartSuccessAction,
+  loadShoppingCartFailureAction,
 } from './shopping-cart.actions';
 
 @Injectable()
@@ -21,17 +21,17 @@ export class ShoppingCartEffects {
 
   addToCart$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(initiateAddToCartAction),
+      ofType(addToCartAction),
       mergeMap(({ product }) =>
         this.productsService.addToShoppingCart(product).pipe(
           map((product: Product) => {
             if (product) {
-              return addToCartAction({ product });
+              return addToCartSuccessAction({ product });
             } else {
               throw new Error();
             }
           }),
-          catchError(() => of(addToCartErrorAction()))
+          catchError(() => of(addToCartFailureAction()))
         )
       )
     );
@@ -42,8 +42,8 @@ export class ShoppingCartEffects {
       ofType(loadShoppingCartAction),
       mergeMap((action) =>
         this.productsService.getShoppingCart().pipe(
-          map((products: Product[]) => getShoppingCartAction({ products })),
-          catchError(() => of(shoppingCartErrorAction()))
+          map((products: Product[]) => loadShoppingCartSuccessAction({ products })),
+          catchError(() => of(loadShoppingCartFailureAction()))
         )
       )
     );

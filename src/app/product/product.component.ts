@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Product } from '../app.interfaces';
-import { initiateAddToCartAction } from '../shopping-cart/state/shopping-cart.actions';
+import { addToCartAction } from '../shopping-cart/state/shopping-cart.actions';
 import { getProductAction } from './state/product.actions';
 import { AppState } from './state/product.interfaces';
 import { getProductInfoSelector } from './state/product.selectors';
@@ -30,6 +30,6 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: Product) {
     let updatedProduct = { ...product, cart: product.cart + 1 };
-    this.store.dispatch(initiateAddToCartAction({ product: updatedProduct }));
+    this.store.dispatch(addToCartAction({ product: updatedProduct }));
   }
 }

@@ -5,7 +5,7 @@ import { ShoppingCartState } from './shopping-cart.interfaces';
 function calculateCartTotal(cart: Product[]) {
   let total = 0;
   cart.forEach((product: Product) => {
-    total += product.price * product.cart;
+    total += product.price
   });
 
   return total;

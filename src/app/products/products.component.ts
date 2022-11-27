@@ -23,7 +23,6 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    let updatedProduct = { ...product, cart: product.cart + 1 };
-    this.store.dispatch(addToCartAction({ product: updatedProduct }));
+    this.store.dispatch(addToCartAction({ product }));
   }
 }

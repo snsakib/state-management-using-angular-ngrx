@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="product-price">
-      <h1>{{ product.price * product.cart | currency: 'USD' }}</h1>
+      <h1>{{ product.price | currency: 'USD' }}</h1>
     </div>
   </mat-card>
   <mat-card *ngIf="(cartCounter$ | async) else empty">

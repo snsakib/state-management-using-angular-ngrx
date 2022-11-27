@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Product } from '../app.interfaces';
+import { addToCartAction } from '../cart/state/cart.actions';
 import { getProductAction } from './state/product.actions';
 import { AppState } from './state/product.interfaces';
 import { getProductInfoSelector } from './state/product.selectors';
@@ -28,5 +29,9 @@ export class ProductComponent implements OnInit {
 
   getProduct(id: number) {
     this.store.dispatch(getProductAction({ id }));
+  }
+
+  addToCart(product: Product) {
+    this.store.dispatch(addToCartAction({ product }));
   }
 }

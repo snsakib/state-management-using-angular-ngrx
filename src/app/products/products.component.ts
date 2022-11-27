@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { getProductsSelector } from './state/products.selectors';
 import { AppState, Product } from '../app.interfaces';
 import { loadProductsAction } from './state/products.actions';
+import { addToCartAction } from '../cart/state/cart.actions';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -21,5 +22,9 @@ export class ProductsComponent implements OnInit {
 
   getProducts() { 
     this.store.dispatch(loadProductsAction())
+  }
+
+  addToCart(product: Product) {
+    this.store.dispatch(addToCartAction({ product }));
   }
 }

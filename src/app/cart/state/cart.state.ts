@@ -1,3 +1,3 @@
-import { Product } from "src/app/app.interfaces";
+import { CartState } from "./cart.interfaces";
 
-export const cartInitialState: Product[] = [];
+export const cartInitialState: CartState = [];

@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductsEffects } from './products/state/products.effects';
 import { CartComponent } from './cart/cart.component';
 import { cartReducer } from './cart/state/cart.reducers';
+import { CartEffects } from './cart/state/cart.effects';
 @NgModule({
   declarations: [AppComponent, ProductsComponent, CartComponent],
   imports: [
@@ -34,7 +35,7 @@ import { cartReducer } from './cart/state/cart.reducers';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, CartEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

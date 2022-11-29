@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.interfaces';
+import { loadCartAction } from './state/cart.actions';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +24,13 @@ export class CartComponent implements OnInit {
   total = 0;
   cartCounter = 0;
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCart();
+  }
+
+  getCart() {
+    this.store.dispatch(loadCartAction());
+  }
 }

@@ -14,3 +14,7 @@ export const addToCartSuccessAction = createAction(
 export const addToCartFailureAction = createAction(
   '[Cart] Add to Cart Failure'
 );
+
+export const loadCartAction = createAction(
+  '[Cart] Load Cart'
+);

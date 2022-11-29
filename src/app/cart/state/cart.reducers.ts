@@ -1,5 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { addToCartAction, addToCartFailureAction, addToCartSuccessAction, loadCartAction } from './cart.actions';
+import {
+  addToCartAction,
+  addToCartFailureAction,
+  addToCartSuccessAction,
+  loadCartAction,
+  loadCartFailureAction,
+  loadCartSuccessAction,
+} from './cart.actions';
 import { CartState } from './cart.interfaces';
 import { cartInitialState } from './cart.state';
 
@@ -17,4 +24,10 @@ export const cartReducer = createReducer<CartState>(
   on(loadCartAction, (state): CartState => {
     return [...state];
   }),
+  on(loadCartSuccessAction, (state, { products }): CartState => {
+    return [...products];
+  }),
+  on(loadCartFailureAction, (state): CartState => {
+    return [...state];
+  })
 );

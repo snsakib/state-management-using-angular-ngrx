@@ -18,3 +18,12 @@ export const addToCartFailureAction = createAction(
 export const loadCartAction = createAction(
   '[Cart] Load Cart'
 );
+
+export const loadCartSuccessAction = createAction(
+  '[Cart] Load Cart Success',
+  props<{ products: Product[] }>()
+);
+
+export const loadCartFailureAction = createAction(
+  '[Cart] Load Cart Failure'
+);

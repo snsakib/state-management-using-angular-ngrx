@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.interfaces';
+import { AppState, Product } from '../app.interfaces';
 import { loadCartAction } from './state/cart.actions';
+import { getCartCounterSelector, getCartSelector, getCartTotalSelector } from './state/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -9,20 +10,8 @@ import { loadCartAction } from './state/cart.actions';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  products = [
-    {
-      id: 0,
-      title: '',
-      author: '',
-      description: '',
-      imgUrl: '',
-      quantity: 0,
-      price: 0,
-      cart: 0,
-    },
-  ];
-  total = 0;
-  cartCounter = 0;
+  products$ = this.store.select<Product[]>(getCartSelector);
+  total$ = this.store.select<number>(getCartTotalSelector);
 
   constructor(private store: Store<AppState>) {}
 

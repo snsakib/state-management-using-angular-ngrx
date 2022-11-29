@@ -77,7 +77,7 @@ export class DataService implements InMemoryDbService {
       },
     ];
 
-    let shoppingCart: any = [];
+    let shoppingCart: Product[] = [];
 
     return { products, shoppingCart };
   }

@@ -13,6 +13,4 @@ export class AppComponent {
   cartCounter$ = this.store.select(getCartCounterSelector);
 
   constructor(private store: Store<AppState>) {}
-
-  ngOnInit() {}
 }

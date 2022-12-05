@@ -14,7 +14,7 @@ export class DataService implements InMemoryDbService {
         title: 'The Angular Masterclass',
         author: 'Educative',
         description: 'Learn all about Angular',
-        imgUrl: '../assets/img/the-angular-masterclass.png',
+        imgUrl: '../assets/img/the-angular-masterclass.jpg',
         quantity: 124,
         price: 24.38,
         cart: 0,
@@ -24,7 +24,7 @@ export class DataService implements InMemoryDbService {
         title: 'The Ultimate Guide to Redux',
         author: 'Educative',
         description: 'Learn about Redux',
-        imgUrl: '../assets/img/the-ultimate-guide-to-redux.png',
+        imgUrl: '../assets/img/the-ultimate-guide-to-redux.jpg',
         quantity: 524,
         price: 22.38,
         cart: 0,
@@ -35,7 +35,7 @@ export class DataService implements InMemoryDbService {
         author: 'Educative',
         description: 'Learn how to build mobile apps with Ionic and Angular',
         imgUrl:
-          '../assets/img/developing-mobile-apps-with-ionic-and-angular.png',
+          '../assets/img/developing-mobile-apps-with-ionic-and-angular.jpg',
         quantity: 146,
         price: 38.99,
         cart: 0,
@@ -46,7 +46,7 @@ export class DataService implements InMemoryDbService {
         author: 'Educative',
         description: 'Design and architect your web applications using Angular',
         imgUrl:
-          '../assets/img/angular-designing-and-architecting-web-applications.png',
+          '../assets/img/angular-designing-and-architecting-web-applications.jpg',
         quantity: 500,
         price: 11.98,
         cart: 0,
@@ -58,7 +58,7 @@ export class DataService implements InMemoryDbService {
         description:
           'Implement authentication using Angular, AuthO and MongoDB',
         imgUrl:
-          '../assets/img/developing-robust-angular-applications-with-auth0-and-mongodb.png',
+          '../assets/img/developing-robust-angular-applications-with-auth0-and-mongodb.jpg',
         quantity: 453,
         price: 30.18,
         cart: 0,
@@ -69,7 +69,7 @@ export class DataService implements InMemoryDbService {
         author: 'Educative',
         description: 'Learn about Spring Boot 2 and Spring WebFlux',
         imgUrl:
-          '../assets/img/full-reactive-stack-with-spring-boot-2-and-spring-webflux.png',
+          '../assets/img/full-reactive-stack-with-spring-boot-2-and-spring-webflux.jpg',
         quantity: 124,
         price: 37.18,
         cart: 0,

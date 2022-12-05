@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {
-  BehaviorSubject,
-  catchError,
-  Observable,
-  tap,
-  throwError,
-} from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,15 +8,7 @@ import {
 export class ProductsService {
   private BASE_URL: string = `api`;
   private PRODUCT_URL: string = 'api/products';
-
-  private cartCounter: number = 0;
-  cartCounter$ = new BehaviorSubject(0);
-
-  private shoppingCart: any = {
-    products: [],
-    total: 0,
-  };
-  shoppingCart$ = new BehaviorSubject<any>({ products: [], total: 0 });
+  private SHOPPING_CART_URL: string = 'api/shoppingCart';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,23 +24,10 @@ export class ProductsService {
       .pipe(catchError(this.errorHandler));
   }
 
-  public createProduct(product: any): Observable<any> {
+  public getShoppingCart(): Observable<any[]> {
     return this.httpClient
-      .post<any>(`${this.PRODUCT_URL}`, product)
+      .get<any[]>(this.SHOPPING_CART_URL)
       .pipe(catchError(this.errorHandler));
-  }
-
-  public deleteProduct(productId: number): Observable<any> {
-    return this.httpClient
-      .delete<any>(`${this.PRODUCT_URL}/${productId}`)
-      .pipe(catchError(this.errorHandler));
-  }
-
-  public updateProduct(product: any): Observable<any> {
-    return this.httpClient.put<any>(
-      `${this.PRODUCT_URL}/${product.id}`,
-      product
-    );
   }
 
   public addToShoppingCart(product: any) {
@@ -64,52 +37,7 @@ export class ProductsService {
 
     return this.httpClient
       .post<any>(`${this.BASE_URL}/shoppingCart`, product, headers)
-      .pipe(
-        tap((data) => {
-          if (data && data.id === product.id) {
-            this.shoppingCart.products.push(data);
-            this.shoppingCart.total += product.price * product.cart;
-            this.shoppingCart$.next(this.shoppingCart);
-            this.cartCounter++;
-            this.cartCounter$.next(this.cartCounter);
-          }
-        }, catchError(this.errorHandler))
-      );
-  }
-
-  public deleteFromShoppingCart(productId: number): Observable<any> {
-    return this.httpClient
-      .delete<any>(`${this.BASE_URL}/shoppingCart/${productId}`)
-      .pipe(
-        tap(() => {
-          let updatedCart = this.shoppingCart.products.filter(
-            (product: any) => product.id !== productId
-          );
-          this.shoppingCart.products = updatedCart;
-          this.calculateCartTotal();
-          this.shoppingCart$.next(this.shoppingCart);
-          this.cartCounter--;
-          this.cartCounter$.next(this.cartCounter);
-        }),
-        catchError(this.errorHandler)
-      );
-  }
-
-  public updateShoppingCartItem(product: any): Observable<any> {
-    return this.httpClient
-      .put<any>(`${this.BASE_URL}/shoppingCart/${product.id}`, product)
-      .pipe(
-        tap(() => {
-          this.calculateCartTotal();
-        })
-      );
-  }
-
-  public calculateCartTotal() {
-    this.shoppingCart.total = 0;
-    this.shoppingCart.products.forEach((product: any) => {
-      this.shoppingCart.total += product.price * product.cart;
-    });
+      .pipe(catchError(this.errorHandler));
   }
 
   private errorHandler(err: any) {
@@ -120,8 +48,6 @@ export class ProductsService {
     } else {
       errMsg = `Backend Error Code: ${err.status}: ${err.body.error}`;
     }
-
-    console.log(err);
 
     return throwError(errMsg);
   }

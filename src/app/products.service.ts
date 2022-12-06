@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +13,12 @@ export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
   public getProducts(): Observable<any[]> {
-    return this.httpClient
-      .get<any[]>(this.PRODUCT_URL)
-      .pipe(catchError(this.errorHandler));
+    // False data
+    return of(['Product 1', 'Product 2']);
+
+    // return this.httpClient
+    //   .get<any[]>(this.PRODUCT_URL)
+    //   .pipe(catchError(this.errorHandler));
   }
 
   public getProduct(productId: number): Observable<any> {

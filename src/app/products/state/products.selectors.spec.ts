@@ -16,7 +16,7 @@ describe('getProductsSelector', () => {
       }
     ];
 
-    const result = getProductsSelector.projector(mockState);
+    const result = getProductsSelector.projector([]);
 
     expect(result).toEqual(mockState);
   });

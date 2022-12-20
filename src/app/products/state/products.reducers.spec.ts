@@ -17,7 +17,7 @@ describe('productsReducer: getProductsAction', () => {
         cart: 0,
       },
     ];
-    const action = getProductsAction({ products: newState });
+    const action = getProductsAction({ products: [] });
     const state = productsReducer(productsInitialState, action);
 
     expect(state).toEqual(newState);

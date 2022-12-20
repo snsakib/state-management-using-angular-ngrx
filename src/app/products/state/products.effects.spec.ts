@@ -53,7 +53,7 @@ describe('ProductsEffects: loadProducts$', () => {
 
       productsServiceSpy.getProducts.and.returnValue(mockResponse);
 
-      expectObservable(effects.loadProducts$).toBe('--c', { c: originalResponse });
+      expectObservable(effects.loadProducts$).toBe('--c', { c: [] });
     });
   });
 });
